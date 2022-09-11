@@ -89,7 +89,11 @@ public class securtyconfig{
         filter.setFilterProcessesUrl("/api/login");
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/login").permitAll();
+        http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/**").permitAll();
+        http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/**").permitAll();
+
+        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/**").permitAll();
+
         http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/user/save").permitAll();
 
 /*        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/**").hasAnyAuthority("user");*/
