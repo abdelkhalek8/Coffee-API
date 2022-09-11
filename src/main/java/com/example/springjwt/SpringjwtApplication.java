@@ -30,7 +30,7 @@ public class SpringjwtApplication {
         return new BCryptPasswordEncoder();
     }
 
-  @Bean
+/*  @Bean
     CommandLineRunner run(UserService userService){
         return args ->{
             userService.saveUser(new User(NULL,"ali.gmail.com","123","ali",new ArrayList<>()));
@@ -47,7 +47,7 @@ public class SpringjwtApplication {
             userService.addRoleToUser("omar.gmail.com","user");
 
         };
-    }
+    }*/
 
 
 }
