@@ -90,8 +90,9 @@ public class securtyconfig{
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/login").permitAll();
-      http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/**").hasAnyAuthority("user");
-        http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/user/save/**").hasAnyAuthority("admin");
+        http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/user/save").permitAll();
+
+/*        http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/**").hasAnyAuthority("user");*/
 
 
         http.authorizeRequests().anyRequest().authenticated();

@@ -27,6 +27,7 @@ public class UserServiceImpl implements  UserService , UserDetailsService {
     public User saveUser(User user) {
         log.info("saving user {} in db",user.getName());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+
         return userRepo.save(user);
     }
 
@@ -37,7 +38,7 @@ public class UserServiceImpl implements  UserService , UserDetailsService {
 
     @Override
     public Void addRoleToUser(String username, String roleName) {
-       User user =userRepo.findByUserName(username);
+       User user =userRepo.findByEmail(username);
        Role role=roleRepo.findByName( roleName);
        user.getRole().add(role);
 
@@ -46,7 +47,7 @@ public class UserServiceImpl implements  UserService , UserDetailsService {
 
     @Override
     public User getUser(String userName) {
-        return userRepo.findByUserName(userName);
+        return userRepo.findByEmail(userName);
     }
 
     @Override
@@ -55,13 +56,13 @@ public class UserServiceImpl implements  UserService , UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-      User user=userRepo.findByUserName(username);
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+      User user=userRepo.findByEmail(email);
       if (user==null){
           log.error("no user found");
           throw new UsernameNotFoundException("user not found");
       } else{
-          log.info("user found",username);
+          log.info("user found",email);
       }
         Collection<SimpleGrantedAuthority> authorities=new ArrayList<>();
        user.getRole().forEach(role->{

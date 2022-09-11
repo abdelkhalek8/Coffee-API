@@ -36,7 +36,7 @@ public class CustemAuthrizaionFilter extends UsernamePasswordAuthenticationFilte
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
-      String username = request.getParameter("username");
+      String username = request.getParameter("email");
         String password = request.getParameter("password");
  log.info("username is {}",username);
         log.info("password is {}",password);

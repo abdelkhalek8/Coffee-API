@@ -29,29 +29,25 @@ public class SpringjwtApplication {
     {
         return new BCryptPasswordEncoder();
     }
-/*
+
   @Bean
     CommandLineRunner run(UserService userService){
         return args ->{
-            userService.saveUser(new User(NULL,"ali","123","ali",new ArrayList<>()));
-            userService.saveUser(new User(NULL,"ahmed","123","ahmed",new ArrayList<>()));
-            userService.saveUser(new User(NULL,"omar","123","omar",new ArrayList<>()));
+            userService.saveUser(new User(NULL,"ali.gmail.com","123","ali",new ArrayList<>()));
+            userService.saveUser(new User(NULL,"ahmed.gmail.com","123","ahmed",new ArrayList<>()));
+            userService.saveUser(new User(NULL,"omar.gmail.com","123","omar",new ArrayList<>()));
 
 
             userService.saveRole(new Role(NULL,"user"));
             userService.saveRole(new Role(NULL,"admin"));
 
-            userService.addRoleToUser("ali","user");
-            userService.addRoleToUser("ahmed","user");
-            userService.addRoleToUser("omar","admin");
-            userService.addRoleToUser("omar","user");
+           userService.addRoleToUser("ali.gmail.com","user");
+            userService.addRoleToUser("ahmed.gmail.com","user");
+            userService.addRoleToUser("ahmed.gmail.com","admin");
+            userService.addRoleToUser("omar.gmail.com","user");
 
         };
+    }
 
-
-
-
-  }
-*/
 
 }
