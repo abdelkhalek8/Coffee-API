@@ -25,10 +25,28 @@ public class UserServiceImpl implements  UserService , UserDetailsService {
     private final PasswordEncoder passwordEncoder;
     @Override
     public User saveUser(User user) {
-        log.info("saving user {} in db",user.getName());
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+try{
+    log.info("saving user {} in db",user.getName());
 
+
+    user.setPassword(passwordEncoder.encode(user.getPassword()));
+    User use= userRepo.findByEmail(user.getEmail());
+    log.info("saving user {} in 34",use);
+
+    if(use==null){
         return userRepo.save(user);
+    }
+    else{
+        return null;
+
+    }
+}catch (Exception e){
+    return null;
+
+}
+
+
+
     }
 
     @Override
