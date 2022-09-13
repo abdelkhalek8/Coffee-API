@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import java.util.List;
 import static java.sql.Types.NULL;
 
 @SpringBootApplication
+@CrossOrigin(origins = "*")
 public class SpringjwtApplication {
 
     public static void main(String[] args) {
