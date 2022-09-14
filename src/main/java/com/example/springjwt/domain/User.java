@@ -23,6 +23,7 @@ public class User {
 
     @Id @GeneratedValue(strategy = AUTO)
     private long id;
+
     private String email;
     private String password;
     private String name;

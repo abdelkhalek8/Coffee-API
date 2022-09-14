@@ -5,7 +5,9 @@ import com.example.springjwt.domain.User;
 import com.example.springjwt.service.ItemService;
 import com.example.springjwt.service.UserService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api") @RequiredArgsConstructor
 @CrossOrigin(origins = "*")
+@Slf4j
 public class ItemResource {
     @Autowired
 
@@ -30,9 +33,9 @@ public class ItemResource {
             return null;
         }*/
     }
-    @PostMapping("/user/save")
+    @PostMapping(value = "/user/save", consumes = { MediaType.APPLICATION_JSON_VALUE ,"text/plain;charset=UTF-8"})@ResponseBody
     public ResponseEntity<User> createUser(@RequestBody User user){
-
+      log.info("in rout");
         return ResponseEntity.ok().body(userService.saveUser(user));
 
     }
