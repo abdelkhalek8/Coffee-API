@@ -51,7 +51,7 @@ public class securtyconfig{
         AbstractAuthenticationProcessingFilter filter = new CustemAuthrizaionFilter(authenticationManager());
         http
                 // by default uses a Bean by the name of corsConfigurationSource
-                .cors(withDefaults());
+                .cors();
         filter.setFilterProcessesUrl("/api/login");
 
         http.csrf().disable();
@@ -77,7 +77,7 @@ public class securtyconfig{
     AuthenticationManager authenticationManager() throws Exception {
         return configuration.getAuthenticationManager();
     }
-    @Bean
+  /*  @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList("*"));
@@ -85,7 +85,7 @@ public class securtyconfig{
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
-    }
+    }*/
     @Autowired
     void configure(AuthenticationManagerBuilder builder) throws Exception {
         builder.userDetailsService(userService).passwordEncoder(new BCryptPasswordEncoder());

@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api") @RequiredArgsConstructor
-@CrossOrigin(origins = "*")
+
 @Slf4j
 public class ItemResource {
     @Autowired
@@ -23,7 +23,13 @@ public class ItemResource {
     private final ItemService itemService;
     @Autowired
     private final UserService userService;
+    @PostMapping(value = "/user/save")
+    @CrossOrigin(origins = "*")
+    public ResponseEntity<User> createUser(@RequestBody User user){
+        log.info("in rout");
+        return ResponseEntity.ok().body(userService.saveUser(user));
 
+    }
     @GetMapping("/items")@CrossOrigin(origins = "*")
     public ResponseEntity<List<Item>> getItem(){
         return ResponseEntity.ok().body(itemService.getItems());
@@ -33,13 +39,7 @@ public class ItemResource {
             return null;
         }*/
     }
-    @PostMapping(value = "/user/save", headers="Accept=application/json")
-    @ResponseBody@CrossOrigin(origins = "*")
-    public ResponseEntity<User> createUser(@RequestBody User user){
-      log.info("in rout");
-        return ResponseEntity.ok().body(userService.saveUser(user));
 
-    }
 
     @PostMapping("/item")@CrossOrigin(origins = "*")
     public ResponseEntity<Item> addItem(@RequestBody Item item){

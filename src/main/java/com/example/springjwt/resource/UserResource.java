@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController @RequestMapping("/api") @RequiredArgsConstructor @CrossOrigin(origins = "*")
+@RestController @RequestMapping("/api") @RequiredArgsConstructor
 public class UserResource  {
     @Autowired
     private UserService userService;
 
 
-  @GetMapping("/users")
+  @GetMapping("/users")@CrossOrigin(origins = "*")
     public ResponseEntity<List<User>>getUser(){
         return ResponseEntity.ok().body(userService.getUsers());
     }
@@ -33,13 +33,13 @@ public class UserResource  {
 
     }*/
     @PostMapping("/role")
-
+    @CrossOrigin(origins = "*")
     public ResponseEntity<Role> createRole(@RequestBody Role role){
 
         return ResponseEntity.ok().body(userService.saveRole(role));
 
     }
-    @PostMapping("/role/user")
+    @PostMapping("/role/user")@CrossOrigin(origins = "*")
 
     public ResponseEntity<Role> addRoleToUser(@RequestBody RoleTouser role){
         userService.addRoleToUser(role.getUserName(),role.getRoleName());
