@@ -62,11 +62,13 @@ public class CustemAuthrizaionFilter extends UsernamePasswordAuthenticationFilte
 /*        response.addHeader("access_token",access_token);
         response.addHeader("refresh_token",refresh_token);*/
 
-        Map<String,String>tokens=new HashMap<>();
-        tokens.put("access_token",access_token);
-      /*  tokens.put("refresh_token",refresh_token);
+        Map<String,String>data=new HashMap<>();
+        data.put("access_token",access_token);
+        data.put("email",user.getUsername());
+
+        /*  tokens.put("refresh_token",refresh_token);
      */   response.setContentType(APPLICATION_JSON_VALUE);
-        new ObjectMapper().writeValue(response.getOutputStream(),tokens);
+        new ObjectMapper().writeValue(response.getOutputStream(),data);
 
 
 
