@@ -24,7 +24,7 @@ public class ItemResource {
     @Autowired
     private final UserService userService;
 
-    @GetMapping("/items")
+    @GetMapping("/items")@CrossOrigin(origins = "*")
     public ResponseEntity<List<Item>> getItem(){
         return ResponseEntity.ok().body(itemService.getItems());
      /*   try {
@@ -34,14 +34,14 @@ public class ItemResource {
         }*/
     }
     @PostMapping(value = "/user/save", headers="Accept=application/json")
-    @ResponseBody
+    @ResponseBody@CrossOrigin(origins = "*")
     public ResponseEntity<User> createUser(@RequestBody User user){
       log.info("in rout");
         return ResponseEntity.ok().body(userService.saveUser(user));
 
     }
 
-    @PostMapping("/item")
+    @PostMapping("/item")@CrossOrigin(origins = "*")
     public ResponseEntity<Item> addItem(@RequestBody Item item){
         return ResponseEntity.ok().body(itemService.addItem(item));
       /*  try {
@@ -51,7 +51,7 @@ public class ItemResource {
         }*/
     }
 
-    @DeleteMapping("/item/{id}")
+    @DeleteMapping("/item/{id}")@CrossOrigin(origins = "*")
     public ResponseEntity<String> deleteItem(@PathVariable Long id){
         try {
             return ResponseEntity.ok().body(itemService.deleteItem(id));

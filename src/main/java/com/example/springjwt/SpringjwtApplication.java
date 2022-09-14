@@ -18,7 +18,7 @@ import java.util.List;
 
 import static java.sql.Types.NULL;
 
-@SpringBootApplication
+@SpringBootApplication@CrossOrigin(origins = "*")
 public class SpringjwtApplication {
 
     public static void main(String[] args) {
