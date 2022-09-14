@@ -5,6 +5,7 @@ import com.example.springjwt.domain.User;
 import com.example.springjwt.service.UserService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController @RequestMapping("/api") @RequiredArgsConstructor
+@RestController @RequestMapping("/api") @RequiredArgsConstructor@Slf4j
 public class UserResource  {
     @Autowired
     private UserService userService;
@@ -20,9 +21,9 @@ public class UserResource  {
     @CrossOrigin(origins = "*")
     public ResponseEntity<User> createUser(@RequestBody User user){
         User us=userService.getUser(user.getEmail());
-    if(!user.getEmail().contains("@")||us==null ){
+    if(!user.getEmail().contains("@")||us!=null ){
 
-return null;
+          return null;
     }
         else{
         return ResponseEntity.ok().body(userService.saveUser(user));
