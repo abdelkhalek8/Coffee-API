@@ -88,7 +88,7 @@ public class securtyconfig{
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         AbstractAuthenticationProcessingFilter filter = new CustemAuthrizaionFilter(authenticationManager());
         filter.setFilterProcessesUrl("/api/login");
-        http.csrf().disable();
+        //http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/**").permitAll();
         http.authorizeRequests().antMatchers(HttpMethod.DELETE, "/api/**").permitAll();
