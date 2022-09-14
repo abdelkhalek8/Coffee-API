@@ -33,7 +33,8 @@ public class ItemResource {
             return null;
         }*/
     }
-    @PostMapping(value = "/user/save", consumes = { MediaType.APPLICATION_JSON_VALUE ,"text/plain;charset=UTF-8"})@ResponseBody
+    @PostMapping(value = "/user/save", headers="Accept=application/json")
+    @ResponseBody
     public ResponseEntity<User> createUser(@RequestBody User user){
       log.info("in rout");
         return ResponseEntity.ok().body(userService.saveUser(user));
