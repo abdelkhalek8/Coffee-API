@@ -2,8 +2,10 @@ package com.example.springjwt.security;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.example.springjwt.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -30,6 +32,7 @@ import static org.springframework.util.MimeTypeUtils.APPLICATION_JSON_VALUE;
 @Slf4j @CrossOrigin(origins = "*")
 public class CustemAuthrizaionFilter extends UsernamePasswordAuthenticationFilter {
  private final AuthenticationManager authenticationManager;
+
 
     public CustemAuthrizaionFilter(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
@@ -61,7 +64,6 @@ public class CustemAuthrizaionFilter extends UsernamePasswordAuthenticationFilte
                 .sign(algorithm);*/
 /*        response.addHeader("access_token",access_token);
         response.addHeader("refresh_token",refresh_token);*/
-
         Map<String,String>data=new HashMap<>();
         data.put("access_token",access_token);
         data.put("email",user.getUsername());

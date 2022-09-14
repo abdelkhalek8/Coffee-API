@@ -4,13 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.repository.cdi.Eager;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
 
 import static javax.persistence.GenerationType.AUTO;
-@Entity  @NoArgsConstructor @AllArgsConstructor
+@Entity  @NoArgsConstructor @AllArgsConstructor@Component("user")
 public class User {
     public long getId() {
         return id;

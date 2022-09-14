@@ -3,6 +3,7 @@ package com.example.springjwt.domain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import javax.naming.Name;
 import javax.persistence.Column;
@@ -16,6 +17,7 @@ import static javax.persistence.GenerationType.AUTO;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Component("item")
 public class Item {
     @Id
     @GeneratedValue(strategy = AUTO)

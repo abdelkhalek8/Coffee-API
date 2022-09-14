@@ -5,6 +5,7 @@ import com.example.springjwt.domain.User;
 import com.example.springjwt.service.ItemService;
 import com.example.springjwt.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +15,12 @@ import java.util.List;
 @RequestMapping("/api") @RequiredArgsConstructor
 @CrossOrigin(origins = "*")
 public class ItemResource {
+    @Autowired
+
     private final ItemService itemService;
+    @Autowired
+    private final UserService userService;
+
     @GetMapping("/items")
     public ResponseEntity<List<Item>> getItem(){
         return ResponseEntity.ok().body(itemService.getItems());
@@ -23,6 +29,12 @@ public class ItemResource {
         }catch (Exception e){
             return null;
         }*/
+    }
+    @PostMapping("/user/save")
+    public ResponseEntity<User> createUser(@RequestBody User user){
+
+        return ResponseEntity.ok().body(userService.saveUser(user));
+
     }
 
     @PostMapping("/item")

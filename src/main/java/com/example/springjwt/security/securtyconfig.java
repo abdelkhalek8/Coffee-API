@@ -49,10 +49,11 @@ public class securtyconfig{
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         AbstractAuthenticationProcessingFilter filter = new CustemAuthrizaionFilter(authenticationManager());
-        filter.setFilterProcessesUrl("/api/login");
         http
                 // by default uses a Bean by the name of corsConfigurationSource
                 .cors(withDefaults());
+        filter.setFilterProcessesUrl("/api/login");
+
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests().antMatchers(HttpMethod.POST, "/api/**").permitAll();
@@ -80,7 +81,7 @@ public class securtyconfig{
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList("*"));
-        configuration.setAllowedMethods(Arrays.asList("GET","POST"));
+        configuration.setAllowedMethods(Arrays.asList("GET","POST","DELETE"));
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;

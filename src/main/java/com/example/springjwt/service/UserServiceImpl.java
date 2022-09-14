@@ -4,25 +4,30 @@ import com.example.springjwt.domain.Role;
 import com.example.springjwt.domain.User;
 import com.example.springjwt.repo.RoleRepo;
 import com.example.springjwt.repo.UserRepo;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-@Service @RequiredArgsConstructor @Transactional @Slf4j
+@Service @RequiredArgsConstructor @Transactional @Slf4j @Component("userServiceImpl")
 public class UserServiceImpl implements  UserService , UserDetailsService {
+    @Autowired
     private final UserRepo userRepo;
+    @Autowired
     private  final RoleRepo roleRepo;
-
-    private final PasswordEncoder passwordEncoder;
+    @Autowired
+    private  PasswordEncoder passwordEncoder;
     @Override
     public User saveUser(User user) {
 try{

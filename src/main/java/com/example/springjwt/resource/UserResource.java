@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController @RequestMapping("/api") @RequiredArgsConstructor@CrossOrigin(origins = "*")
+@RestController @RequestMapping("/api") @RequiredArgsConstructor @CrossOrigin(origins = "*")
 public class UserResource  {
-    private final UserService userService;
+    @Autowired
+    private UserService userService;
+
 
   @GetMapping("/users")
     public ResponseEntity<List<User>>getUser(){
@@ -24,12 +26,12 @@ public class UserResource  {
 
 
 
-    @PostMapping("/user/save")
+/*    @PostMapping("/user/save")
     public ResponseEntity<User> createUser(@RequestBody User user){
 
         return ResponseEntity.ok().body(userService.saveUser(user));
 
-    }
+    }*/
     @PostMapping("/role")
 
     public ResponseEntity<Role> createRole(@RequestBody Role role){
@@ -46,7 +48,7 @@ public class UserResource  {
     }
 
 }
-@Data
+@Data //@CrossOrigin(origins = "*")
 class RoleTouser{
     public String getUserName() {
         return userName;
