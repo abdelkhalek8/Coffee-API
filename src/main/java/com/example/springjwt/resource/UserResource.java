@@ -16,7 +16,18 @@ import java.util.List;
 public class UserResource  {
     @Autowired
     private UserService userService;
+    @PostMapping(value = "/user/save")
+    @CrossOrigin(origins = "*")
+    public ResponseEntity<User> createUser(@RequestBody User user){
+        User us=userService.getUser(user.getEmail());
+    if(!user.getEmail().contains("@")||us==null ){
 
+return null;
+    }
+        else{
+        return ResponseEntity.ok().body(userService.saveUser(user));
+    }
+    }
 
   @GetMapping("/users")@CrossOrigin(origins = "*")
     public ResponseEntity<List<User>>getUser(){

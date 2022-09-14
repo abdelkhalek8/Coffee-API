@@ -21,15 +21,8 @@ public class ItemResource {
     @Autowired
 
     private final ItemService itemService;
-    @Autowired
-    private final UserService userService;
-    @PostMapping(value = "/user/save")
-    @CrossOrigin(origins = "*")
-    public ResponseEntity<User> createUser(@RequestBody User user){
-        log.info("in rout");
-        return ResponseEntity.ok().body(userService.saveUser(user));
 
-    }
+
     @GetMapping("/items")@CrossOrigin(origins = "*")
     public ResponseEntity<List<Item>> getItem(){
         return ResponseEntity.ok().body(itemService.getItems());
