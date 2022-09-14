@@ -77,15 +77,16 @@ public class securtyconfig{
     AuthenticationManager authenticationManager() throws Exception {
         return configuration.getAuthenticationManager();
     }
-  /*  @Bean
+   @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList("*"));
         configuration.setAllowedMethods(Arrays.asList("GET","POST","DELETE"));
+        configuration.addAllowedHeader("*");
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
-    }*/
+    }
     @Autowired
     void configure(AuthenticationManagerBuilder builder) throws Exception {
         builder.userDetailsService(userService).passwordEncoder(new BCryptPasswordEncoder());
